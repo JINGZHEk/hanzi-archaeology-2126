@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -c src/character.js)",
+      "Bash(node -c src/characterManager.js)",
+      "Bash(node -c src/main.js)"
+    ]
+  }
+}

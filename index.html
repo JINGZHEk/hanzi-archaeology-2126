@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="color-scheme" content="dark light" />
+    <title>汉字考古2126</title>
+    <link rel="stylesheet" href="./styles/app.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="grid"></div>
+      <div id="hud" class="hud"></div>
+      <div id="toast" class="toast"></div>
+    </div>
+
+    <!-- 教程弹窗 -->
+    <div class="tutorial-modal" id="tutorialModal">
+      <div class="tutorial-content">
+        <button class="tutorial-close" id="closeModal" aria-label="关闭">&times;</button>
+        <h2 class="tutorial-title">梗词淘金热 &middot; 游戏说明</h2>
+        <div class="tutorial-section">
+          <p class="tutorial-text">
+            <strong>游戏开始后</strong>，系统将随机抽取经典网络热梗生成残缺词条，玩家需在限定时间内，结合页面给出的文字提示、残缺线索，完成梗词文字匹配与补全。
+          </p>
+        </div>
+        <div class="tutorial-section">
+          <p class="tutorial-text">
+            <strong>游戏过程中</strong>会随机触发趣味干扰机制，角色会不定期进行捣乱干扰：例如遮挡部分提示文字、切换展示样式、增加小干扰障碍等，提升答题难度与趣味性。
+          </p>
+        </div>
+        <div class="tutorial-section">
+          <p class="tutorial-text">
+            <strong>玩家需要</strong>克服随机干扰、观察现有线索，准确补全完整梗词。每成功完成一轮梗词补全挑战，即可解锁并领取对应主题收藏卡片；连续闯关、完美作答还可解锁稀有限定卡片。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 字库图鉴详情弹窗 -->
+    <div class="detail-modal" id="detailModal">
+      <div class="detail-content">
+        <button class="detail-close" id="closeDetail" aria-label="关闭">&times;</button>
+        <h2 class="detail-word" id="detailWord"></h2>
+        <div class="detail-section">
+          <h3 class="section-title">本意溯源</h3>
+          <p class="section-content" id="detailOrigin"></p>
+        </div>
+        <div class="detail-section">
+          <h3 class="section-title">扭曲含义</h3>
+          <p class="section-content" id="detailDistorted"></p>
+        </div>
+        <div class="detail-section">
+          <h3 class="section-title">烂梗泛滥后，厚重底蕴被消解，出现在如下场合：</h3>
+          <ul class="examples-list" id="detailExamples"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 背景音乐 -->
+    <audio id="bgm" src="./douyincreat.mp3" loop preload="auto"></audio>
+    <script>
+      (function() {
+        var bgm = document.getElementById('bgm');
+        bgm.volume = 0.35;
+        function tryPlay() { bgm.play().catch(function(){}); }
+        tryPlay();
+        document.addEventListener('pointerdown', function once() { tryPlay(); document.removeEventListener('pointerdown', once); });
+        document.addEventListener('keydown', function once() { tryPlay(); document.removeEventListener('keydown', once); });
+      })();
+    </script>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
